@@ -444,7 +444,7 @@ process CONDITIONAL {
   """
 }
 
-chr_ch = channel.of(1..22)
+chr_ch = Channel.of(1..22)
 
 workflow {
   CONDITIONAL(chr_ch)
@@ -498,7 +498,7 @@ process PRINTCHR {
   """
 }
 
-chr_ch = channel.of(1..22, 'X', 'Y')
+chr_ch = Channel.of(1..22, 'X', 'Y')
 
 workflow {
   PRINTCHR(chr_ch)
@@ -519,7 +519,8 @@ number of cpus 1
 ~~~
 {: .output }
 
-The above process uses the three directives, `tag`, `cpus` and `echo`.
+The above process uses the three directives, `tag`, `cpus` and `echo`. 
+As of version 22.04.0, echo has been deprecated and replaced by debug.
 
 The `tag` directive to allow you to give a custom tag to each process execution. This tag makes it easier to identify a particular task (executed instance of a process) in a log file or in the execution report.
 
@@ -699,7 +700,7 @@ In the above example, the `publishDir "results/quant"`,  creates a symbolic link
 
 > ## publishDir
 > The publishDir output is relative to the path the pipeline run has been launched. Hence, it is a good practice to use [implicit variables](https://www.nextflow.io/docs/latest/script.html?highlight=projectdir#script-implicit-variables) like `projectDir` to specify publishDir value.
-{: .callout }
+{: .callout } 
 
 ### publishDir parameters
 
